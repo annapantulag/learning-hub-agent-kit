@@ -17,6 +17,17 @@ Single source of truth extracted from [learning-hub-gcp](https://github.com/anna
 
 ## Quick start
 
+**Fastest (code repo):** copy `adopt-kit.sh` to your repo root and run:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/annapantulag/learning-hub-agent-kit/main/adopt-kit.sh -o adopt-kit.sh
+chmod +x adopt-kit.sh
+./adopt-kit.sh              # install + verify
+./adopt-kit.sh --commit --push
+```
+
+Or clone the kit and use `install.sh` (see [adoption guide](modules/docs/agentic-workflows/adopt-learning-hub-agent-kit.md)).
+
 ```bash
 git clone https://github.com/annapantulag/learning-hub-agent-kit.git
 cd learning-hub-agent-kit
@@ -48,6 +59,7 @@ See [VERSION](VERSION). Consumers get `.learning-hub-agent-kit-version` after in
 
 ## Status
 
+- **0.1.3** — Add `adopt-kit.sh` for one-command repo-root adoption (paths auto-resolved).
 - **0.1.2** — Add [adopt-learning-hub-agent-kit.md](modules/docs/agentic-workflows/adopt-learning-hub-agent-kit.md) adoption guide (Phase 7 team setup included).
 - **0.1.1** — Fix `--global` install paths (`~/.cursor/skills`, `rules`, `hooks`); hook command rewritten for global layout.
 - **0.1.0** — Phase 2 scaffold: modules populated from learning-hub-gcp; `install.sh` supports `--repo`, `--check`, `--update`, `--global` (basic).

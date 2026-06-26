@@ -1,6 +1,6 @@
 # learning-hub-agent-kit manifest — maps modules to installable trees.
 # install.sh merges each module's files into the target repo root.
-version: "0.1.2"
+version: "0.1.3"
 
 modules:
   core-git:
@@ -41,6 +41,7 @@ modules:
       - gh-docs/README.md
       - gh-docs/agent-git-workflow.md
       - gh-docs/git-push-authentication.md
+      - adopt-kit.sh
 
   infographics:
     description: Pre-commit learning infographics (opt-in)
