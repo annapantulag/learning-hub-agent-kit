@@ -1,6 +1,6 @@
 # learning-hub-agent-kit manifest — maps modules to installable trees.
 # install.sh merges each module's files into the target repo root.
-version: "0.1.1"
+version: "0.1.2"
 
 modules:
   core-git:
@@ -27,6 +27,7 @@ modules:
     paths:
       - agentic-workflows/README.md
       - agentic-workflows/architecture.md
+      - agentic-workflows/adopt-learning-hub-agent-kit.md
       - agentic-workflows/branch-naming.md
       - agentic-workflows/commit-message-examples.md
       - agentic-workflows/cursor-automation.md

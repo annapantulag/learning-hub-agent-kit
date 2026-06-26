@@ -30,6 +30,8 @@ cd learning-hub-agent-kit
 
 After install, commit the copied files in the target repo. Learning repos must customize `infographics-folder-map.yaml` (copy from `infographics-folder-map.example.yaml`).
 
+**Adoption guide:** [modules/docs/agentic-workflows/adopt-learning-hub-agent-kit.md](modules/docs/agentic-workflows/adopt-learning-hub-agent-kit.md) — step-by-step for any repo (solo, team, code, learning).
+
 ## Commands
 
 ```bash
@@ -46,5 +48,6 @@ See [VERSION](VERSION). Consumers get `.learning-hub-agent-kit-version` after in
 
 ## Status
 
+- **0.1.2** — Add [adopt-learning-hub-agent-kit.md](modules/docs/agentic-workflows/adopt-learning-hub-agent-kit.md) adoption guide (Phase 7 team setup included).
 - **0.1.1** — Fix `--global` install paths (`~/.cursor/skills`, `rules`, `hooks`); hook command rewritten for global layout.
 - **0.1.0** — Phase 2 scaffold: modules populated from learning-hub-gcp; `install.sh` supports `--repo`, `--check`, `--update`, `--global` (basic).

@@ -64,6 +64,7 @@ flowchart TD
 | [workflow-picker.md](workflow-picker.md) | Discover skills & docs from chat — choose a workflow without memorizing triggers |
 | [architecture.md](architecture.md) | Layers (rules, skills, docs, hooks, automations), file formats, **how to add new workflows** |
 | [learning-hub-agent-kit-plan.md](learning-hub-agent-kit-plan.md) | Plan to extract reusable workflows into shared learning-hub-agent-kit (modules, install script, phases) |
+| [adopt-learning-hub-agent-kit.md](adopt-learning-hub-agent-kit.md) | **Step-by-step:** install kit into any repo (solo, team, code, learning) |
 | [git-commit-push.md](git-commit-push.md) | Full commit & push workflow — steps, permissions, auth, commit style |
 | [prerequisites.md](prerequisites.md) | One-time setup: remote, PAT, `gh`, `.gitignore`, permissions |
 | [phases.md](phases.md) | Rollout plan — phases 1–3 status |
