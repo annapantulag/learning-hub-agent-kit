@@ -1,0 +1,59 @@
+# learning-hub-agent-kit manifest — maps modules to installable trees.
+# install.sh merges each module's files into the target repo root.
+version: "0.1.0"
+
+modules:
+  core-git:
+    description: Git safety rule and commit/PR skills
+    depends: []
+    paths:
+      - .cursor/rules/git-safety.mdc
+      - .cursor/skills/git-commit-push/SKILL.md
+      - .cursor/skills/git-feature-pr/SKILL.md
+      - .cursor/skills/github-pull-request/SKILL.md
+      - .cursor/skills/workflow-picker/SKILL.md
+
+  secrets:
+    description: Secret commit hook and CI scan
+    depends: []
+    paths:
+      - .cursor/hooks.json
+      - .cursor/hooks/block-secret-commit.sh
+      - .github/workflows/secret-scan.yml
+
+  docs:
+    description: Generic agent workflow reference docs
+    depends: []
+    paths:
+      - agentic-workflows/README.md
+      - agentic-workflows/architecture.md
+      - agentic-workflows/branch-naming.md
+      - agentic-workflows/commit-message-examples.md
+      - agentic-workflows/cursor-automation.md
+      - agentic-workflows/git-commit-push.md
+      - agentic-workflows/git-feature-pr.md
+      - agentic-workflows/github-actions.md
+      - agentic-workflows/local-quality-checks.md
+      - agentic-workflows/phases.md
+      - agentic-workflows/prerequisites.md
+      - agentic-workflows/workflow-picker.md
+      - gh-docs/README.md
+      - gh-docs/agent-git-workflow.md
+      - gh-docs/git-push-authentication.md
+
+  infographics:
+    description: Pre-commit learning infographics (opt-in)
+    depends: [core-git, docs]
+    paths:
+      - .cursor/skills/infographics-sync/SKILL.md
+      - agentic-workflows/infographics-sync.md
+      - agentic-workflows/AGENT-infographics.md
+      - agentic-workflows/learning-hub.html
+      - agentic-workflows/infographics-folder-map.example.yaml
+      - agentic-workflows/presync.yaml
+      - .github/scripts/detect-infographics-folders.sh
+      - .github/scripts/detect-infographics-folders.py
+      - .github/scripts/check-infographics-integrity.py
+      - .github/scripts/check-html-links.py
+      - .github/scripts/check-mermaid-svg.sh
+      - .github/workflows/quality-checks.yml

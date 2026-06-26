@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agentic Workflows — Learning Hub</title>
+  <script src="../get-cert-gear-prof-de-gcp/docs/shared/learning-hub-theme-head.js"></script>
+  <link rel="stylesheet" href="../get-cert-gear-prof-de-gcp/docs/shared/learning-hub.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'loose' });</script>
+</head>
+<body data-hub="agentic-workflows">
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <a class="sidebar-back" href="../README.md">← learning-hub-gcp</a>
+      <h1>Agentic workflows</h1>
+      <p>Cursor git · PR · infographics sync</p>
+    </div>
+
+    <div class="nav-group">Start</div>
+    <a class="nav-link" data-panel="overview" href="#overview">How to use</a>
+
+    <div class="nav-group">Diagrams</div>
+    <a class="nav-link" data-panel="shipping-paths" href="#shipping-paths">01 · Shipping paths</a>
+    <a class="nav-link" data-panel="cursor-layers" href="#cursor-layers">02 · Cursor layers</a>
+    <a class="nav-link" data-panel="commit-pipeline" href="#commit-pipeline">03 · Commit pipeline</a>
+
+    <div class="nav-group">Retain</div>
+    <a class="nav-link" data-panel="note-shipping-paths" href="#note-shipping-paths">01 · main vs PR</a>
+    <a class="nav-link" data-panel="note-cursor-layers" href="#note-cursor-layers">02 · Layers</a>
+
+    <div class="nav-group">Implement</div>
+    <a class="nav-link" data-panel="troubleshooting" href="#troubleshooting">Troubleshooting</a>
+    <a class="nav-link" data-panel="source-docs" href="#source-docs">Source docs</a>
+
+    <div class="nav-group">Related</div>
+    <a class="nav-link" href="infographics-sync.md">infographics-sync.md</a>
+    <a class="nav-link" href="../gh-docs/git-push-authentication.md">gh-docs · git auth</a>
+  </nav>
+
+  <main class="main">
+
+    <section id="panel-overview" class="panel active">
+      <article class="poster">
+        <div class="poster-header">
+          <h2>Agentic workflows — Learning Hub</h2>
+          <p class="goal">Go-to guide for shipping changes safely from Cursor: choose a path, understand layers, run the full commit pipeline including <strong>infographics sync</strong>.</p>
+          <p class="meta">
+            <span class="tag">Live Server required</span>
+            <span class="tag">Say: show workflows</span>
+          </p>
+        </div>
+        <div class="poster-body">
+          <div class="study-guide">
+            <h3>How to use this hub</h3>
+            <ol class="study-steps">
+              <li><strong>Brief</strong> — <a href="study-notes/00-brief.md">00-brief.md →</a></li>
+              <li><strong>01</strong> — Pick main vs PR <a href="#shipping-paths">Diagram →</a> <a href="#note-shipping-paths">Retain →</a></li>
+              <li><strong>02</strong> — Rules, skills, hooks, CI <a href="#cursor-layers">Diagram →</a></li>
+              <li><strong>03</strong> — Commit pipeline + infographics <a href="#commit-pipeline">Diagram →</a></li>
+              <li><strong>Ship</strong> — <a href="git-commit-push.md">git-commit-push.md</a> or <a href="git-feature-pr.md">git-feature-pr.md</a></li>
+            </ol>
+          </div>
+          <div class="card-grid">
+            <div class="card">
+              <h3>Commit &amp; push</h3>
+              <p>Fast path to main</p>
+              <a class="btn btn-primary" href="git-commit-push.md">Workflow doc →</a>
+            </div>
+            <div class="card">
+              <h3>Ship via PR</h3>
+              <p>feature/ branch + merge</p>
+              <a class="btn btn-primary" href="git-feature-pr.md">Workflow doc →</a>
+            </div>
+            <div class="card">
+              <h3>Infographics sync</h3>
+              <p>Pre-commit learning artifacts</p>
+              <a class="btn btn-secondary" href="infographics-sync.md">Sync doc →</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="panel-shipping-paths" class="panel" data-mmd="sources/01-shipping-path-decision.mmd">
+      <article class="poster">
+        <div class="poster-header"><h2>01 — Shipping path decision</h2><p class="goal">When to commit-and-push vs ship-via-PR.</p></div>
+        <div class="poster-body">
+          <div class="split-pane" data-split-default="58">
+            <div class="split-diagram"><div class="diagram-stage"><p>Loading…</p></div></div>
+            <div class="split-handle" role="separator"></div>
+            <aside class="split-explain">
+              <h3>How to read</h3>
+              <ul>
+                <li><strong>Small solo edit</strong> → commit and push</li>
+                <li><strong>Review trail / branch isolation</strong> → ship via PR</li>
+                <li>Auto-review on <code>main</code> is Cursor — not PAT failure</li>
+              </ul>
+              <a class="btn btn-secondary" href="#note-shipping-paths">Retain panel →</a>
+              <a class="btn btn-secondary" href="study-notes/01-shipping-paths.md">Full study note →</a>
+            </aside>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="panel-cursor-layers" class="panel" data-mmd="sources/02-cursor-layers.mmd">
+      <article class="poster">
+        <div class="poster-header"><h2>02 — Cursor layers</h2><p class="goal">Rule · skill · doc · hook · CI — what runs when.</p></div>
+        <div class="poster-body">
+          <div class="split-pane" data-split-default="58">
+            <div class="split-diagram"><div class="diagram-stage"><p>Loading…</p></div></div>
+            <div class="split-handle" role="separator"></div>
+            <aside class="split-explain">
+              <ul>
+                <li><strong>git-safety.mdc</strong> — always on</li>
+                <li><strong>SKILL.md</strong> — when you ask</li>
+                <li><strong>Hook</strong> — blocks secret commits</li>
+              </ul>
+              <a class="btn btn-secondary" href="study-notes/02-cursor-layers.md">Study note →</a>
+              <a class="btn btn-secondary" href="architecture.md">architecture.md →</a>
+            </aside>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="panel-commit-pipeline" class="panel" data-mmd="sources/03-commit-pipeline.mmd">
+      <article class="poster">
+        <div class="poster-header"><h2>03 — Commit pipeline</h2><p class="goal">Inspect → secrets → content sync (presync.yaml) → quality checks → commit → push.</p></div>
+        <div class="poster-body">
+          <div class="split-pane" data-split-default="58">
+            <div class="split-diagram"><div class="diagram-stage"><p>Loading…</p></div></div>
+            <div class="split-handle" role="separator"></div>
+            <aside class="split-explain">
+              <pre class="hcl-block"># when agentic-workflows/presync.yaml exists:
+# run skill_path + detect_script from presync.yaml
+bash .github/scripts/run-quality-checks.sh</pre>
+              <p>Skip: use <code>skip_phrase</code> from <a href="presync.yaml">presync.yaml</a></p>
+              <a class="btn btn-secondary" href="presync.yaml">presync.yaml →</a>
+            </aside>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="panel-note-shipping-paths" class="panel">
+      <article class="poster">
+        <div class="poster-header"><h2>Retain · Shipping paths</h2></div>
+        <div class="poster-body">
+          <div class="retain-box">
+            <strong>main:</strong> commit and push — small solo edits.<br>
+            <strong>PR:</strong> ship via PR — <code>feature/</code> branch, review, merge.<br>
+            <strong>Solo merge:</strong> review diff → say <em>merge the PR</em>.
+          </div>
+          <p class="note-footer"><a href="study-notes/01-shipping-paths.md">study-notes/01-shipping-paths.md</a></p>
+        </div>
+      </article>
+    </section>
+
+    <section id="panel-note-cursor-layers" class="panel">
+      <article class="poster">
+        <div class="poster-header"><h2>Retain · Cursor layers</h2></div>
+        <div class="poster-body">
+          <div class="retain-box">Rule (always) → Skill (on ask) → Doc (reference) → Hook (block) → CI (verify on push).</div>
+          <p class="note-footer"><a href="study-notes/02-cursor-layers.md">study-notes/02-cursor-layers.md</a></p>
+        </div>
+      </article>
+    </section>
+
+    <section id="panel-troubleshooting" class="panel">
+      <article class="poster">
+        <div class="poster-header"><h2>Troubleshooting</h2></div>
+        <div class="poster-body">
+          <table class="coverage-table">
+            <thead><tr><th>Symptom</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>401 on push</td><td><a href="../gh-docs/git-push-authentication.md">unset GIT_ASKPASS · PAT as password</a></td></tr>
+              <tr><td>Auto-review blocked main</td><td>Retry same push with Smart Mode approval</td></tr>
+              <tr><td>Quality check failed</td><td>Fix · re-stage · re-run run-quality-checks.sh</td></tr>
+              <tr><td>Hook blocked commit</td><td>Remove secrets from stage · new commit</td></tr>
+            </tbody>
+          </table>
+          <a class="btn btn-primary" href="git-commit-push.md#failure-modes">Full failure modes →</a>
+        </div>
+      </article>
+    </section>
+
+    <section id="panel-source-docs" class="panel">
+      <article class="poster">
+        <div class="poster-header"><h2>Source docs</h2></div>
+        <div class="poster-body">
+          <ul>
+            <li><a href="README.md">README.md</a></li>
+            <li><a href="git-commit-push.md">git-commit-push.md</a></li>
+            <li><a href="git-feature-pr.md">git-feature-pr.md</a></li>
+            <li><a href="infographics-sync.md">infographics-sync.md</a></li>
+            <li><a href="infographics-folder-map.yaml">infographics-folder-map.yaml</a></li>
+            <li><a href="infographics-folder-state.yaml">infographics-folder-state.yaml</a></li>
+            <li><a href="study-notes/00-coverage-map.md">00-coverage-map.md</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+  </main>
+</div>
+<script src="../get-cert-gear-prof-de-gcp/docs/shared/learning-hub.js"></script>
+</body>
+</html>

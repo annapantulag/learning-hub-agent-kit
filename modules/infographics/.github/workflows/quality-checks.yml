@@ -1,0 +1,41 @@
+name: Quality checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  html-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check learning-hub.html relative links
+        run: bash .github/scripts/run-quality-checks.sh html-links
+
+  mermaid-svg:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check Mermaid .mmd / .svg pairing
+        run: bash .github/scripts/run-quality-checks.sh mermaid-svg
+
+  markdown-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Lint agent workflow markdown
+        run: bash .github/scripts/run-quality-checks.sh markdown-lint
+
+  infographics-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check infographics map, state, and filesystem
+        run: bash .github/scripts/run-quality-checks.sh infographics-integrity

@@ -1,0 +1,58 @@
+---
+description: Git commit and push safety — no secrets, no auto-commit, no force-push main
+alwaysApply: true
+---
+
+# Git safety
+
+Repo identity: detect at runtime — `gh repo view --json nameWithOwner -q .nameWithOwner` (fallback: parse `git remote get-url origin`).
+
+## When to commit or push
+
+- Only create commits when the user **explicitly** asks (e.g. "commit", "commit and push").
+- Do **not** auto-commit after edits or at end of session.
+- Push only when the user explicitly asks to push (commit-only is valid).
+
+## Never commit
+
+- `token.md`, `*token*.md`, `.env`, `.env.*`
+- `*credentials*.json`, `*service-account*.json`, `*.pem`, `*.key`
+- `application_default_credentials.json`, `.gcloud/`
+
+Warn the user if they request committing any of these.
+
+## Forbidden git operations
+
+- Never `git push --force` to `main` or `master` (warn if user requests)
+- Never `git config` changes
+- Never `--no-verify` / `--no-gpg-sign` unless user explicitly requests
+- Avoid `git commit --amend` unless user rules amend conditions are all met
+
+## Push from Cursor (macOS)
+
+Before `git push` in the agent terminal:
+
+```bash
+unset GIT_ASKPASS SSH_ASKPASS
+export GIT_TERMINAL_PROMPT=1
+```
+
+On 401 / auth failure, read `gh-docs/git-push-authentication.md`.
+
+Push blocked by Cursor **Auto-review** (not auth): retry the same `git push` with Smart Mode approval — see `agentic-workflows/git-commit-push.md#cursor-auto-review-push-to-main`.
+
+## PR and merge
+
+- Full PR path: `.cursor/skills/git-feature-pr/SKILL.md` — branch `feature/<topic>`, base `main`, merge after explicit user request (solo) or GitHub approval (team)
+- **Solo:** explicit *"merge the PR"* after reviewing diff — GitHub does not allow self-approval
+- **Team:** create `.github/require-pr-approval`; require `reviewDecision: APPROVED` from a non-author reviewer
+- Never `gh pr merge` without user asking
+- Never auto-merge
+
+## Workflow reference
+
+For full steps, use skill `.cursor/skills/git-commit-push/SKILL.md` or `agentic-workflows/git-commit-push.md`.
+
+## Hook
+
+`beforeShellExecution` hook `.cursor/hooks/block-secret-commit.sh` denies `git commit` when staged files match secret patterns.

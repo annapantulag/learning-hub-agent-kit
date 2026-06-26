@@ -1,0 +1,9 @@
+# Optional pre-commit content sync. core-git skills run the named skill
+# before quality checks when this file exists. Repos without generated
+# content simply omit this file and the step is skipped silently.
+version: 1
+skill: infographics-sync
+skill_path: .cursor/skills/infographics-sync/SKILL.md
+detect_script: .github/scripts/detect-infographics-folders.sh
+skip_phrase: "skip infographics this commit"
+description: Sync learning infographics for mapped folders before commit.

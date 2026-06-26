@@ -1,0 +1,68 @@
+# Main folders that receive learning infographics before commit.
+# Edit this file when adding/removing mapped roots. See infographics-sync.md.
+# Runtime progress: infographics-folder-state.yaml (agent-updated after each sync).
+version: 1
+
+ignore_prefixes:
+  - .cursor/
+  - .github/
+  - gh-docs/
+  - gear-prof-de-cert/
+
+folders:
+  - path: get-cert-gear-prof-de-gcp
+    label: GCP Professional Data Engineer cert prep
+    agent_doc: get-cert-gear-prof-de-gcp/docs/AGENT-infographics.md
+    skill: get-cert-gear-prof-de-gcp/.cursor/skills/gcp-pde-infographics/SKILL.md
+    scope: topic_subfolders
+    bootstrap_marker: learning-hub.html
+    parent_hub: get-cert-gear-prof-de-gcp/docs/cert-learning-hub.html
+    status: active
+    hub_status: complete
+    agent_note: >-
+      Hub complete — incremental only. Sync changed mod-*/skill-* topic subfolders
+      (transcript.md hubs). Update cert-learning-hub.html when a module status changes.
+
+  - path: udemy/dataform
+    label: Udemy Dataform course
+    agent_doc: udemy/dataform/docs/AGENT-infographics.md
+    scope: folder_root
+    bootstrap_marker: learning-hub.html
+    status: active
+    hub_status: complete
+    agent_note: >-
+      Hub complete — incremental only. Refresh when sec-*, labs/, study-notes/,
+      or README.md change. Ten diagrams + CLI lifecycle panels.
+
+  - path: agentic-workflows
+    label: Agentic workflows (Cursor git / PR)
+    agent_doc: agentic-workflows/AGENT-infographics.md
+    scope: folder_root
+    bootstrap_marker: learning-hub.html
+    status: active
+    hub_status: complete
+    agent_note: >-
+      Hub bootstrapped — incremental only when workflow .md files change. Registry:
+      infographics-folder-state.yaml.
+
+  - path: gcp-de-saidhul-course
+    label: Saidhul DE course
+    agent_doc: gcp-de-saidhul-course/AGENT-infographics.md
+    scope: folder_root
+    bootstrap_marker: learning-hub.html
+    status: active
+    hub_status: complete
+    agent_note: >-
+      Lightweight hub bootstrapped — external links only. Incremental when sessions/
+      notes are added. Do not invent session content.
+
+  - path: udemy/dataflow
+    label: Udemy Dataflow course
+    agent_doc: udemy/dataflow/docs/AGENT-infographics.md
+    scope: folder_root
+    bootstrap_marker: learning-hub.html
+    status: placeholder
+    hub_status: not_started
+    agent_note: >-
+      Placeholder — skip sync until course README and section notes exist. Remove
+      status placeholder from map when ready to bootstrap.
