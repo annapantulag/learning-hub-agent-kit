@@ -1,6 +1,6 @@
 # learning-hub-agent-kit manifest — maps modules to installable trees.
 # install.sh merges each module's files into the target repo root.
-version: "0.1.0"
+version: "0.1.1"
 
 modules:
   core-git:

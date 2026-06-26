@@ -46,4 +46,5 @@ See [VERSION](VERSION). Consumers get `.learning-hub-agent-kit-version` after in
 
 ## Status
 
+- **0.1.1** — Fix `--global` install paths (`~/.cursor/skills`, `rules`, `hooks`); hook command rewritten for global layout.
 - **0.1.0** — Phase 2 scaffold: modules populated from learning-hub-gcp; `install.sh` supports `--repo`, `--check`, `--update`, `--global` (basic).

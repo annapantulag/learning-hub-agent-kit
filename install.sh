@@ -91,15 +91,22 @@ check_repo() {
 
 install_global() {
   local dest="${HOME}/.cursor"
+  local core_git="$KIT_ROOT/modules/core-git/.cursor"
   mkdir -p "$dest/rules" "$dest/skills" "$dest/hooks"
   echo "Installing core-git + secrets into $dest (global baseline)"
-  copy_module "core-git" "$dest"
+  if [[ -d "$core_git/rules" ]]; then
+    cp -R "$core_git/rules/." "$dest/rules/"
+  fi
+  if [[ -d "$core_git/skills" ]]; then
+    cp -R "$core_git/skills/." "$dest/skills/"
+  fi
   if [[ -f "$KIT_ROOT/modules/secrets/.cursor/hooks.json" ]]; then
-    cp "$KIT_ROOT/modules/secrets/.cursor/hooks.json" "$dest/hooks.json"
+    sed 's|\.cursor/hooks/|hooks/|g' \
+      "$KIT_ROOT/modules/secrets/.cursor/hooks.json" > "$dest/hooks.json"
     cp -R "$KIT_ROOT/modules/secrets/.cursor/hooks/." "$dest/hooks/"
   fi
   echo "$VERSION" > "$dest/${MARKER}-version"
-  echo "Global install done. Note: skill doc links point at agentic-workflows/ in repos — use --repo for full docs."
+  echo "Global install done. Skills/rules at $dest/{skills,rules}. Doc links in skills need agentic-workflows/ in repos — use --repo for full docs."
 }
 
 MODE=""
