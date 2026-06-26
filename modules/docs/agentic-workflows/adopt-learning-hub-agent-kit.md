@@ -58,7 +58,68 @@ Full auth guide: [gh-docs/git-push-authentication.md](../gh-docs/git-push-authen
 
 ---
 
-## Step 1 — Choose your module set
+## Fastest path — `adopt-kit.sh` at repo root
+
+Place the script in your repo root. It resolves **repo** (this directory) and **kit** (sibling clone, env var, or auto-clone to `~/.local/share/learning-hub-agent-kit`) automatically.
+
+### One-time setup per repo
+
+```bash
+cd /path/to/your-repo
+
+# Download script to repo root
+curl -fsSL https://raw.githubusercontent.com/annapantulag/learning-hub-agent-kit/main/adopt-kit.sh -o adopt-kit.sh
+chmod +x adopt-kit.sh
+```
+
+Or copy from a local kit clone:
+
+```bash
+cp ~/Documents/annapantulag/learning-hub-agent-kit/adopt-kit.sh .
+chmod +x adopt-kit.sh
+```
+
+### Run (code repo)
+
+```bash
+./adopt-kit.sh                    # install + verify
+./adopt-kit.sh --commit           # stage and commit adoption files
+./adopt-kit.sh --commit --push    # commit and push
+```
+
+### Learning repo
+
+```bash
+./adopt-kit.sh --learning --commit --push
+```
+
+### Later — update from a new kit release
+
+```bash
+./adopt-kit.sh --update --commit --push
+```
+
+### Script options
+
+| Flag | Effect |
+|------|--------|
+| `--learning` | Add `infographics` module |
+| `--modules a,b,c` | Custom module list |
+| `--kit PATH` | Kit clone location (or set `LEARNING_HUB_AGENT_KIT`) |
+| `--no-clone` | Do not auto-clone kit to cache |
+| `--update` | Re-sync managed files from kit |
+| `--check` | Drift check only |
+| `--commit` | `git add` adoption paths and commit |
+| `--push` | Push after commit |
+| `--repo PATH` | Target repo (default: directory containing the script) |
+
+**Kit discovery order:** `--kit` / `$LEARNING_HUB_AGENT_KIT` → `../learning-hub-agent-kit` → `~/.local/share/learning-hub-agent-kit` (cloned from GitHub if missing).
+
+Keep `adopt-kit.sh` in the repo so teammates can run `./adopt-kit.sh --update` after kit releases.
+
+---
+
+## Manual path (install.sh)
 
 | Repo type | Modules | When to use |
 |-----------|---------|-------------|
@@ -347,6 +408,12 @@ git commit -m "Bump learning-hub-agent-kit to $(cat .learning-hub-agent-kit-vers
 git push
 ```
 
+Or from repo root if `adopt-kit.sh` is committed:
+
+```bash
+./adopt-kit.sh --update --commit --push
+```
+
 **Repo-specific files** the kit never manages — safe to keep across updates:
 
 - `agentic-workflows/infographics-folder-map.yaml`
@@ -375,7 +442,16 @@ git push
 
 ---
 
-## Quick reference — full code-repo adoption
+## Quick reference — `adopt-kit.sh` (code repo)
+
+```bash
+cd /path/to/your-repo
+curl -fsSL https://raw.githubusercontent.com/annapantulag/learning-hub-agent-kit/main/adopt-kit.sh -o adopt-kit.sh
+chmod +x adopt-kit.sh
+./adopt-kit.sh --commit --push
+```
+
+## Quick reference — manual install.sh
 
 ```bash
 # One-time: clone kit
